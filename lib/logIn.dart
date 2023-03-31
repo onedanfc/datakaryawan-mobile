@@ -10,19 +10,20 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
-
+  bool obskur = false;
   @override
   Widget build(BuildContext context) {
     final tinggi = MediaQuery.of(context).size.height;
     final lebar = MediaQuery.of(context).size.width;
+    
+
     return Scaffold(
         body: Column(
       children: [
         Container(
-          decoration: BoxDecoration(
-            borderRadius:
-                const BorderRadius.only(bottomLeft: Radius.circular(100)),
-            color: Colors.amber[600],
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(100)),
+            color: Color(0xFF9A208C),
           ),
           width: lebar,
           height: tinggi * 0.4,
@@ -48,43 +49,76 @@ class _LoginState extends State<Login> {
               children: <Widget>[
                 SizedBox(
                   width: lebar * 0.8,
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                        alignLabelWithHint: false,
-                        border: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 0.5, color: Colors.grey),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(30))),
-                        labelText: 'Email',
-                        prefixIcon: Icon(Icons.email)),
-                    // validator: (value) {
-                    //   if (value.isEmpty) {
-                    //     return 'Please enter your email';
-                    //   }
-                    //   return null;
-                    // },
-                    // onSaved: (value) {
-                    //   _email = value;
-                    // },
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(25.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.purple.withOpacity(0.2),
+                            spreadRadius: 1,
+                            // blurRadius: 2,
+                            offset: const Offset(1, 2),
+                          ),
+                        ]),
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30))),
+                          labelText: 'Email',
+                          labelStyle: TextStyle(color: Color(0xffE11299)),
+                          prefixIcon: Icon(
+                            Icons.email,
+                            color: Color(0xffE11299),
+                          )),
+                      // validator: (value) {
+                      //   if (value.isEmpty) {
+                      //     return 'Please enter your email';
+                      //   }
+                      //   return null;
+                      // },
+                      // onSaved: (value) {
+                      //   _email = value;
+                      // },
+                    ),
                   ),
                 ),
                 SizedBox(
-                  height: tinggi * 0.02,
+                  height: tinggi * 0.04,
                 ),
-                SizedBox(
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(25.0),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.purple.withOpacity(0.2),
+                          spreadRadius: 1,
+                          // blurRadius: 2,
+                          offset: const Offset(1, 2),
+                        ),
+                      ]),
                   width: lebar * 0.8,
                   child: TextFormField(
-                    decoration:  InputDecoration(
+                    decoration: InputDecoration(
                       border: const OutlineInputBorder(
-                          borderSide:
-                              BorderSide(width: 0.5, color: Colors.grey),
                           borderRadius: BorderRadius.all(Radius.circular(30))),
-                      prefixIcon: const Icon(Icons.lock),
-                      suffixIcon: IconButton(onPressed: () {}, icon: const Icon(Icons.remove_red_eye_sharp),),
+                      prefixIcon:
+                          const Icon(Icons.lock, color: Color(0xffE11299)),
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                            obskur = !obskur;
+                            });
+                          },
+                          icon: Icon((obskur == false)
+                              ? Icons.remove_red_eye_rounded
+                              : Icons.visibility_off_rounded, color: const Color(0xffE11299),)),
                       labelText: 'Password',
+                      labelStyle: const TextStyle(color: Color(0xffE11299)),
                     ),
-                    obscureText: true,
+                    obscureText: (obskur == false) ? false : true,
                     // validator: (value) {
                     //   if (value.isEmpty) {
                     //     return 'Please enter your password';
@@ -97,29 +131,42 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 SizedBox(
-                  height: tinggi * 0.05,
+                  height: tinggi * 0.1,
                 ),
-                RawMaterialButton(
-                  onPressed: () {},
-                  fillColor: Colors.amber,
-                  elevation: 2.0,
-                  child: Text(
-                    'Login',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18.0,
-                    ),
-                  ),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16.0,
-                    vertical: 8.0,
-                  ),
-                  shape: RoundedRectangleBorder(
+                Container(
+                  decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25.0),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.purple.withOpacity(0.2),
+                        spreadRadius: 1,
+                        // blurRadius: 2,
+                        offset: Offset(1, 1),
+                      ),
+                    ],
                   ),
-                  constraints: BoxConstraints(
-                    minWidth: lebar * 0.8,
-                    maxWidth: lebar * 0.8,
+                  child: RawMaterialButton(
+                    onPressed: () {},
+                    fillColor: const Color(0xFF9A208C),
+                    elevation: 2.0,
+                    child: Text(
+                      'Login',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                      ),
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0,
+                      vertical: 8.0,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                    ),
+                    constraints: BoxConstraints(
+                      minWidth: lebar * 0.8,
+                      maxWidth: lebar * 0.8,
+                    ),
                   ),
                 ),
               ],

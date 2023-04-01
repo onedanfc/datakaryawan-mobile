@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           fontFamily: 'Satoshi'),
       home: const Login(),
+      // home: MyHomePage(title: 'Coba'),
     );
   }
 }

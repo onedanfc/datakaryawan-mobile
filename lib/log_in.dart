@@ -142,7 +142,7 @@ class _LoginState extends State<Login> {
                           color: Colors.purple.withOpacity(0.2),
                           spreadRadius: 1,
                           // blurRadius: 2,
-                          offset: Offset(1, 1),
+                          offset: const Offset(1, 1),
                         ),
                       ],
                     ),

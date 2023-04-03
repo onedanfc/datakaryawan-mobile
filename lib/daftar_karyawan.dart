@@ -1,3 +1,4 @@
+import 'package:datakaryawan_mobile/form_karyawan.dart';
 import 'package:flutter/material.dart';
 import 'package:datakaryawan_mobile/card_karyawan.dart';
 
@@ -13,22 +14,34 @@ class _DaftarKaryawanState extends State<DaftarKaryawan> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: const SizedBox(),
         centerTitle: true,
         backgroundColor: const Color(0xFF9A208C),
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.arrow_left_rounded)),
         title: const Text('Daftar Karyawan'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.outbox))
+        ],
       ),
-      body: ListView.builder(
-          itemCount: 8,
-          itemBuilder: (BuildContext context, int index) {
-            return const CardKaryawan();
-          }),
+      body: SizedBox(
+        width: double.infinity,
+        height: MediaQuery.of(context).size.height * 0.9,
+        child: ListView.builder(
+            itemCount: 8,
+            itemBuilder: (BuildContext context, int index) {
+              return const CardKaryawan();
+            }),
+      ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const FromKaryawan()),
+          );
+        },
         backgroundColor: const Color(0xFF9A208C),
         child: const Icon(
           Icons.summarize,

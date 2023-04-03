@@ -190,11 +190,11 @@ class _FromKaryawanState extends State<FromKaryawan> {
                               _imageFile!,
                               height: 200,
                             ),
-                            SizedBox(height: 20),
+                           const SizedBox(height: 20),
                           ],
                           ElevatedButton(
                             onPressed: _getImage,
-                            child: Text('Select Image'),
+                            child:const Text('Select Image'),
                           ),
                           // TextFormField(
                           //   decoration:
@@ -240,7 +240,7 @@ class DatePickerFormField extends StatefulWidget {
   final TextEditingController controller;
   final String labelText;
 
-  DatePickerFormField({
+ const DatePickerFormField({
     required this.controller,
     required this.labelText,
   });
@@ -274,7 +274,7 @@ class _DatePickerFormFieldState extends State<DatePickerFormField> {
       decoration: InputDecoration(
         labelText: widget.labelText,
         suffixIcon: IconButton(
-          icon: Icon(Icons.calendar_today),
+          icon: const Icon(Icons.calendar_today),
           onPressed: () => _selectDate(context),
         ),
       ),

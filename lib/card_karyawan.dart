@@ -1,3 +1,4 @@
+import 'package:datakaryawan_mobile/detail_karyawan.dart';
 import 'package:flutter/material.dart';
 
 class CardKaryawan extends StatelessWidget {
@@ -11,7 +12,12 @@ class CardKaryawan extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: RawMaterialButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const DetailKaryawan()),
+              );
+          },
           child: Container(
             decoration: BoxDecoration(
                 color: Colors.white38,

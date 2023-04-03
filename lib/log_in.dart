@@ -15,8 +15,6 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     final tinggi = MediaQuery.of(context).size.height;
     final lebar = MediaQuery.of(context).size.width;
-    
-
     return Scaffold(
         body: SingleChildScrollView(
           child: Column(
